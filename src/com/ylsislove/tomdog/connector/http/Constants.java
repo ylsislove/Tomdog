@@ -83,4 +83,15 @@ public final class Constants {
 		return url_name.containsKey(url);
 	}
 	
+	public static boolean requireFilter(String uri) {
+		if (!uri.endsWith(".ico")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static String getFilterClass(String uri) {
+		return "course.AccessFilter";
+	}
+	
 }

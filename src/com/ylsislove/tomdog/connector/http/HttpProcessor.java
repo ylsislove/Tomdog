@@ -85,18 +85,18 @@ public class HttpProcessor implements Runnable {
 			}
 
 			// 如果Filter要求过滤该请求
-			if (!uri.endsWith(".ico")) {
-				Manager.getFilter().process(request, response, "course.AccessFilter");
+			if (Constants.requireFilter(request.getRequestURI())) {
+				Manager.getFilter().process(request, response, Constants.getFilterClass(request.getRequestURI()));
 			}
 
 			// 这是一个jsp请求
 			if (uri.endsWith(".jsp")) {
-				JspProcessor processor = new JspProcessor();
+				JspProcessor processor = Manager.getJspProcessor(request.getRequestURI());
 				processor.process(request, response);
 			}
 			// 这是一个servlet请求
 			else if (Constants.isServletUrl(request.getRequestURI())) {
-				ServletProcessor processor = new ServletProcessor();
+				ServletProcessor processor = Manager.getServletProcessor(request.getRequestURI());
 				processor.process(request, response);
 			}
 			// 这是一个静态资源的请求

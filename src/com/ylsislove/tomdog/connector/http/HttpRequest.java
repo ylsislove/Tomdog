@@ -36,9 +36,9 @@ public class HttpRequest implements HttpServletRequest {
 	private boolean requestedSessionURL;
 
 	protected ArrayList<Cookie> cookies = new ArrayList<Cookie>();
-	protected Map<String, String[]> parameters = new HashMap<String, String[]>();;
-	protected Map<String, Object> attributes = new HashMap<String, Object>();
+	protected Map<String, String[]> parameters = new HashMap<String, String[]>();
 	protected Map<String, ArrayList<String>> headers = new HashMap<String, ArrayList<String>>();
+	protected Map<String, Object> attributes = new HashMap<String, Object>();
 	protected String contextPath = "";
 	protected boolean parsed = false;
 
